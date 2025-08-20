@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Header from '../Components/Header';
 import Button from '../Components/Button.jsx';
 import Input from '../Components/Input.jsx';
@@ -8,12 +9,7 @@ const InputData = [
   {
     label: "Username",
     placeholder: "Enter your username",
-    type: "text",
-  },
-  {
-    label: "Email",
-    placeholder: "Enter your email",
-    type: "email",
+    type: "taxt",
   },
 ];
 
@@ -62,32 +58,29 @@ const Login = () => {
                     onChange={input.onChange}
                   />
                 ))}
-                {InputPasswordData.map((input, index) => (
-                  <Inputpassword
-                    key={index}
-                    label={input.label}
-                    placeholder={input.placeholder}
-                  />
-                ))}
-              </div>
-              <div className='self-end m-2.5'>
-                <a to="/forgot-password" className='font-lato text-base text-blue-500 cursor-pointer'>
+                <Inputpassword
+                  label="Password"
+                  placeholder="Enter your password"
+                />
+                <p className='text-right m-4'>
+                <Link to="/forgot-password" className='font-lato text-blue-500 cursor-pointer'>
                   Lupa Password?
-                </a>
-              </div>
-              <div className='flex flex-col gap-5'>
+                </Link>
+                </p>
+                <div className='flex flex-col gap-5'>
                 <Button
                   text="Login"
                   color="bg-blue-500"
                 />
                 <Button
-                  text="Daftar Login Dengan Akun Google"
+                  text="Login Dengan Akun Google"
                   color="bg-[#333333]"
                   image="../src/assets/Google.svg"
                 />
+                </div>
               </div>
               <p className='font-lato text-base text-[Black-900 (#1A1A1A)] self-center mt-2.5'>Belum Punya Akun?   
-                <a href="" className='text-blue-500 ml-1.5 cursor-pointer'>Daftar Disini</a>
+                <Link to="/register" className='text-blue-500 ml-1.5 cursor-pointer'>Daftar Disini</Link>
               </p>
             </form>
           </div>

@@ -10,7 +10,7 @@ const Inputpassword = ({ label, placeholder }) => {
     <div>
        <div className='flex flex-col gap-2.5'>
         <label className='mt-2.5'>{label}</label>
-        <div className='h-12 bg-white rounded-xl items-center shadow-inner
+        <div className='h-12 bg-white rounded-2xl items-center shadow-inner
         justify-between flex relative p-1.5'>
         <input
         type={showPassword ? 'text' : 'password'}
