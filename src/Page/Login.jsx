@@ -30,7 +30,7 @@ const Login = () => {
           <div className='hidden lg:block'>
             <Logo/>
           </div>
-          <div className='flex flex-row justify-center h-auto pl-14 pr-14 
+          <div className='flex flex-row justify-center h-auto p-5
           w-full md:w-2/6 items-center'>
             <form className='flex flex-col gap-2.5 h-full w-full shadow-inner rounded-4xl p-7 bg-[#CDF5FD]'>
               <header className='flex flex-col self-start gap-10'>
