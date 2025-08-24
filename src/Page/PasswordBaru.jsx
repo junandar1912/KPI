@@ -31,6 +31,10 @@ const PasswordBaru = () => {
                 <Inputpassword
                     label={input.label}
                     placeholder={input.placeholder}
+                    value={''}
+                    onClick={() => {
+                      // Handle password change
+                    }}
                 />
                 ))}
             </div>
@@ -38,6 +42,9 @@ const PasswordBaru = () => {
                 <Button
                     text="Simpan Perubahan"
                     color="bg-[#3EDD29]"
+                    onClick={() => {
+                      // Handle password change
+                    }}
                 />
             </div>
             <p className='text-center mt-8'>Sudah ingat akunmu?<a href="/" className='text-blue-500'>Login Disini</a></p>

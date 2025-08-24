@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Components/Header'
 import Input from '../Components/Input'
 import Button from '../Components/Button'
+import PasswordBaru from './PasswordBaru'
 
 const InputData = [{
     label: "Email",
@@ -11,6 +12,41 @@ const InputData = [{
 
 
 const LupaPassword = () => {
+
+  const [PasswordBaru, setPasswordBaru] = React.useState('');
+
+
+
+  const forgotPassword = async (email) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/auth/forgot-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email })
+    });
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      console.log('Reset link sent');
+      alert('Link reset password telah dikirim ke email Anda. Link akan expired dalam 10 menit.');
+    } else {
+      console.error('Failed:', data.errors);
+      if (data.errors.email) {
+        alert(data.errors.email[0]);
+      }
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+  }
+};
+
+
+
+
+
   return (
     <div className='min-h-screen bg-gradient-to-r from-[#77CEf38c] via-[#CDF5FD] to-[#00A9FF] '>
       <Header />
@@ -30,6 +66,8 @@ const LupaPassword = () => {
                     label={input.label}
                     type={input.type}
                     placeholder={input.placeholder}
+                    value={ PasswordBaru }
+                    onChange={(e) => setPasswordBaru(e.target.value)}
                 />
                 ))}
             </div>
@@ -37,6 +75,7 @@ const LupaPassword = () => {
                 <Button
                     text="Kirim Kode Verifikasi"
                     color="bg-blue-500"
+                    onClick={() => forgotPassword(PasswordBaru)}
                 />
             </div>
             <p className='text-center mt-8'>Sudah ingat akunmu?<a href="/" className='text-blue-500'>Login Disini</a></p>

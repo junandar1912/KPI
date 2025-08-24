@@ -11,9 +11,9 @@ const App = () => {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/forgot-password" element={<LupaPassword />} />
+      <Route path="/lupa-password" element={<LupaPassword />} />
       <Route path="/register" element={<Registrasi />} />
-      <Route path="/new-password" element={<PasswordBaru />} />
+      <Route path="/password-baru" element={<PasswordBaru />} />
     </Routes>
   </BrowserRouter>
   )
