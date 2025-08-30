@@ -5,6 +5,7 @@ import Login from './Page/Login';
 import Registrasi from './Page/Registrasi';
 import LupaPassword from './Page/LupaPassword';
 import PasswordBaru from './Page/PasswordBaru';
+import Dasbord from './Page/Dasbord';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/lupa-password" element={<LupaPassword />} />
       <Route path="/register" element={<Registrasi />} />
       <Route path="/password-baru" element={<PasswordBaru />} />
+      <Route path="/Menu" element={<Dasbord/>}/>
     </Routes>
   </BrowserRouter>
   )
