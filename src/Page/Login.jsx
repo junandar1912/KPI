@@ -110,7 +110,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <p className='text-right m-4'>
-                <Link to="/forgot-password" className='font-lato text-blue-500 cursor-pointer'>
+                <Link to="/lupa-password" className='font-lato text-blue-500 cursor-pointer'>
                   Lupa Password?
                 </Link>
                 </p>

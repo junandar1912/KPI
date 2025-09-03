@@ -61,7 +61,7 @@ const LupaPassword = () => {
             <p className='font-lato text-2xl text-[Black-900 (#1A1A1A)]'>Masukan Email untuk mengirim kode verifikasi</p>
          </header>
             <div className='flex flex-col gap-5 mt-10'>
-                {InputData.map((input, index) => (
+                {InputData.map((input,) => (
                 <Input
                     label={input.label}
                     type={input.type}
