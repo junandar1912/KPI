@@ -2,6 +2,9 @@ import React, { useState, useCallback } from 'react'
 import Sidemenu from '../Components/Menu/Sidemenu'
 import HeaderMenu from '../Components/Menu/HeaderMenu';
 import TombolMenu from '../Components/Menu/TombolMenu';
+import NavMenu from '../Components/Menu/NavMenu';
+import DaftarKaryawan from '../Components/Kolom-data/DaftarKaryawan';
+import Karyawan from '../Components/FormPenambahan/Karyawan.jsx'
 
 
 const Dasbord = () => {
@@ -9,11 +12,19 @@ const Dasbord = () => {
   const [isSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
   const [MarginSidebar, setMarginSidebar] = useState (false);
   const [activeJudul, setActiveJudul] = useState ('Dashboard');
+  const [tombolForm, setTombolForm] = useState (false);
+  const [hiddenForm, setHiddenForm] = useState (true);
 
-  const TombolSidebar = useCallback(() => { 
+  const TombolSidebar = useCallback(() => {  // side bar
     setSidebarTidakterlihat(prevState => !prevState)
     setMarginSidebar(prevState => !prevState)
   }, [])
+
+  const TombolForm = useCallback(() => { // form tambah karyawan
+    setTombolForm(prevState => !prevState)
+    setHiddenForm(prevState => !prevState)
+  }, [])
+
 
 
 
@@ -27,8 +38,11 @@ const Dasbord = () => {
           <h1 className='text-2xl font-semibold font-public-sans'>{activeJudul}</h1>
           <p className='font-public-sans font-extralight text-lg'>Mengelola Dan Melihat Informasi{activeJudul}</p>
         </div>
-        <TombolMenu />
+        <TombolMenu FormData={TombolForm} />
       </header>
+      <NavMenu />
+      <DaftarKaryawan />
+      <Karyawan MunculForm={hiddenForm} FungsiSpan={TombolForm} />
       </main>
     </div>
   )

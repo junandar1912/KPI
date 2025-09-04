@@ -10,11 +10,11 @@ const Sidemenu = ({ TerlihatSidebar, tombolSidebar, setJudul }) => {
         <img src="../src/assets/cmlabs-logo-new.svg" alt="logo-cmlabs" className='h-10 w-40'/>
         <button onClick={tombolSidebar} className='bg-[url("../src/assets/bottom-side.svg")] h-8 w-8 cursor-pointer'></button>
       </div>
-      <button className='text-center w-full mt-5 h-6 font-sans font-medium text-gray-600 cursor-pointer'>Main Menu</button>
+      <button className='text-center w-full mt-5 h-6 font-sans font-medium text-gray-600 cursor-pointer' onClick={() => setJudul("Menu")}>Main Menu</button>
       <ul className='justify-start flex flex-col gap-2.5 text-lg font-public font-normal text-gray-600 p-2.5 w-full pr-10'>
         <li className='flex flex-row gap-5 h-8 cursor-pointer hover:bg-[#FAFAFA] rounded-[10px] 
-        hover:outline-1 items-center p-0.5 hover:text-black hover:font-semibold' onClick={() => setJudul("Dasbord")}>
-          <i className='fa fa-address-card fa-regular h-5 w-2.5 text-gray-700 '></i><p>Dashboard</p>
+        hover:outline-1 items-center p-0.5 hover:text-black hover:font-semibold' onClick={() => setJudul("Data Karyawan")}>
+          <i className='fa fa-address-card fa-regular h-5 w-2.5 text-gray-700 '></i><p>Data Karyawan</p>
         </li>
         <li className='flex flex-row gap-5 h-8 cursor-pointer hover:bg-[#FAFAFA] rounded-[10px] 
         hover:outline-1 items-center p-0.5 hover:text-black hover:font-semibold' onClick={() => setJudul("Data Divisi")}>
