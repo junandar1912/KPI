@@ -17,16 +17,16 @@ const Karyawan = ({MunculForm, FungsiSpan}) => {
         <Input label="Email" placeholder="Input Email" type="text" />
         <Input label="Divisi" placeholder="Input Divisi" type="text" />
         <Input label="Jabatan" placeholder="Input Jabatan" type="text" />
-        <Input label="Tanggal Masuk" placeholder="Input Tanggal Masuk" type="date" />
-        <div>
-          <img src="" alt="" />
+        <Input label="Tanggal Masuk" placeholder="Input Tanggal Masuk" type="text" />
+        <div className='min-w-full h-28 flex flex-col justify-center items-center outline-1 outline-black'>
+          <img src="../src/assets/icon-upload.svg" className='h-8 w-8' />
           <p>Upload Photo</p>
-          <button>select file</button>
+          <button className='bg-[#3EDD29] w-20 h-6 rounded-lg text-white cursor-pointer'>select file</button>
         </div>
       </form>
-      <div>
-        <button>Hapus</button>
-        <button>Simpan</button>
+      <div className='flex flex-row gap-24 justify-center text-white'>
+        <button className='bg-[#FF5151] h-9 w-32 rounded-lg'>Hapus</button>
+        <button className='bg-blue-500 h-9 w-32 rounded-lg'>Simpan</button>
       </div>
     </div>
   )

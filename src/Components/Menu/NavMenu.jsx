@@ -31,6 +31,9 @@ const NavMenu = () => {
           <option className='flex flex-row justify-between items-center cursor-pointer'>
             Pilih Bulan
           </option>
+          <option value="">Januari</option>
+          <option value="">Febuari</option>
+          
         </select>
         <button className='w-[107px] outline-gray-400 outline-1 rounded-lg h-9 bg-white 
         flex flex-row gap-2 justify-center items-center cursor-pointer'>

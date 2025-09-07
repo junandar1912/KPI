@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from 'react'
-import Sidemenu from '../Components/Menu/Sidemenu'
-import HeaderMenu from '../Components/Menu/HeaderMenu';
-import TombolMenu from '../Components/Menu/TombolMenu';
-import NavMenu from '../Components/Menu/NavMenu';
-import DaftarKaryawan from '../Components/Kolom-data/DaftarKaryawan';
+import Sidemenu from '../Components/Menu/Sidemenu.jsx'
+import HeaderMenu from '../Components/Menu/HeaderMenu.jsx';
+import TombolMenu from '../Components/Menu/TombolMenu.jsx';
+import NavMenu from '../Components/Menu/NavMenu.jsx';
+import DaftarKaryawan from '../Components/KolomTable-data/DaftarKaryawan.jsx';
 import Karyawan from '../Components/FormPenambahan/Karyawan.jsx'
 
 
-const Dasbord = () => {
+const DasbordKaryawan = () => {
 
   const [isSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
   const [MarginSidebar, setMarginSidebar] = useState (false);
@@ -36,7 +36,7 @@ const Dasbord = () => {
       <header className='flex flex-row justify-between items-center'>
         <div className='flex flex-col gap-5'>
           <h1 className='text-2xl font-semibold font-public-sans'>{activeJudul}</h1>
-          <p className='font-public-sans font-extralight text-lg'>Mengelola Dan Melihat Informasi{activeJudul}</p>
+          <p className='font-public-sans font-extralight text-lg'>Mengelola Dan Melihat Informasi Karyawan Di Seluruh Perusahaan</p>
         </div>
         <TombolMenu FormData={TombolForm} />
       </header>
@@ -48,4 +48,4 @@ const Dasbord = () => {
   )
 }
 
-export default Dasbord;
+export default DasbordKaryawan;
