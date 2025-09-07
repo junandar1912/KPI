@@ -26,6 +26,9 @@ const NavMenu = () => {
           <option className='flex flex-row justify-between items-center cursor-pointer'>
             Pilih Jabatan
           </option>
+          <option value="">Manager</option>
+          <option value="">Staff</option>
+          <option value="">Suverpasior</option>
         </select>
         <select className='h-9 w-1/6 outline-1 outline-gray-400 rounded-lg p-1.5'>
           <option className='flex flex-row justify-between items-center cursor-pointer'>
@@ -33,7 +36,16 @@ const NavMenu = () => {
           </option>
           <option value="">Januari</option>
           <option value="">Febuari</option>
-          
+          <option value="">Maret</option>
+          <option value="">April</option>
+          <option value="">Mei</option>
+          <option value="">Juni</option>
+          <option value="">Juli</option>
+          <option value="">Agustus</option>
+          <option value="">September</option>
+          <option value="">OKtober</option>
+          <option value="">November</option>
+          <option value="">Desember</option>
         </select>
         <button className='w-[107px] outline-gray-400 outline-1 rounded-lg h-9 bg-white 
         flex flex-row gap-2 justify-center items-center cursor-pointer'>

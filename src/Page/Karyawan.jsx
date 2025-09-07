@@ -9,9 +9,9 @@ import Karyawan from '../Components/FormPenambahan/Karyawan.jsx'
 
 const DasbordKaryawan = () => {
 
-  const [isSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
+  const [isiSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
   const [MarginSidebar, setMarginSidebar] = useState (false);
-  const [activeJudul, setActiveJudul] = useState ('Dashboard');
+  const [activeJudul, setActiveJudul] = useState ('Daftar Karyawan');
   const [tombolForm, setTombolForm] = useState (false);
   const [hiddenForm, setHiddenForm] = useState (true);
 
@@ -31,7 +31,7 @@ const DasbordKaryawan = () => {
   return (
     <div className='flex flex-col gap-8 h-min-screen w-full bg-[#FAFAFA]'>
       <HeaderMenu activeJudul={activeJudul} TombolSidebar={TombolSidebar} 
-      isSidebarTerlihat={isSidebarTerlihat} MarginSidebar={MarginSidebar} setJudul={setActiveJudul} />
+      isiSidebarTerlihat={isiSidebarTerlihat} MarginSidebar={MarginSidebar} setJudul={setActiveJudul} />
       <main className={`flex flex-col gap-8 p-11 h-min-screen ${MarginSidebar ? 'ml-56' : 'ml-0'}`}>
       <header className='flex flex-row justify-between items-center'>
         <div className='flex flex-col gap-5'>

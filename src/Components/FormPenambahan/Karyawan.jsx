@@ -1,4 +1,5 @@
 import React from 'react'
+import icon from '../../assets/icon-upload.svg';
 import Input from '../Input'
 
 const Karyawan = ({MunculForm, FungsiSpan}) => {
@@ -19,7 +20,7 @@ const Karyawan = ({MunculForm, FungsiSpan}) => {
         <Input label="Jabatan" placeholder="Input Jabatan" type="text" />
         <Input label="Tanggal Masuk" placeholder="Input Tanggal Masuk" type="text" />
         <div className='min-w-full h-28 flex flex-col justify-center items-center outline-1 outline-black'>
-          <img src="../src/assets/icon-upload.svg" className='h-8 w-8' />
+          <img src={icon} className='h-8 w-8' />
           <p>Upload Photo</p>
           <button className='bg-[#3EDD29] w-20 h-6 rounded-lg text-white cursor-pointer'>select file</button>
         </div>

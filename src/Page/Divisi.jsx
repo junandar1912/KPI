@@ -7,11 +7,12 @@ import DaftarDivisi from '../Components/KolomTable-data/DaftarDIvisi';
 import Divisi from '../Components/FormPenambahan/Divisi.jsx'
 import Header from '../Components/Header';
 
+
 const DasbordDivisi = () => {
 
-  const [isSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
+  const [isiSidebarTerlihat, setSidebarTidakterlihat] = useState (false);
   const [MarginSidebar, setMarginSidebar] = useState (false);
-  const [activeJudul, setActiveJudul] = useState ('Dashboard');
+  const [activeJudul, setActiveJudul] = useState ('Daftar Divisi');
   const [tombolForm, setTombolForm] = useState (false);
   const [hiddenForm, setHiddenForm] = useState (true);
   
@@ -20,7 +21,7 @@ const DasbordDivisi = () => {
       setMarginSidebar(prevState => !prevState)
     }, [])
   
-    const TombolForm = useCallback(() => { // form tambah karyawan
+    const SpanForm = useCallback(() => { // form tambah karyawan
       setTombolForm(prevState => !prevState)
       setHiddenForm(prevState => !prevState)
     }, [])
@@ -32,18 +33,19 @@ const DasbordDivisi = () => {
 
   return (
     <div className='flex flex-col gap-8 h-min-screen w-full bg-[#FAFAFA]'>
-      <HeaderMenu />
+      <HeaderMenu activeJudul={activeJudul} TombolSidebar={TombolSidebar}
+      setJudul={setActiveJudul} isiSidebarTerlihat={isiSidebarTerlihat} MarginSidebar={MarginSidebar}/>
       <main className={`flex flex-col gap-8 p-11 h-min-screen ${MarginSidebar ? 'ml-56' : 'ml-0'}`}>
         <header className='flex flex-row justify-between items-center'> 
           <div className='flex flex-col gap-5'>
            <h1 className='text-2xl font-semibold font-public-sans'>Daftar Divisi</h1>
            <p className='font-public-sans font-extralight text-lg'>Mengelola Dan Melihat Informasi Divisi Di Seluruh Perusahaan</p>
           </div>
-         <TombolMenu FormData={TombolForm}/>
+         <TombolMenu FormData={SpanForm}/>
         </header>
         <NavMenu />
         <DaftarDivisi/>
-        <Divisi  MunculForm={hiddenForm} FungsiSpan={TombolForm}/>
+        <Divisi  MunculForm={hiddenForm} FungsiSpan={SpanForm}/>
       </main>
     </div>
   )

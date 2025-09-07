@@ -8,12 +8,12 @@ const data = [
     CreateDate: "Analis Keuangan",
     JumlahAnggota: "2023-02-14",
     status: "Active",},
-    { id: "EMP-001",
-    name: "Ayu Kartika",
+    { idDivisi: "EMP-001",
+    Manager: "Ayu Kartika",
     division: "Finance",
-    title: "Analis Keuangan",
-    joinDate: "2023-02-14",
-    status: "Inactive",}
+    CreateDate: "Analis Keuangan",
+    JumlahAnggota: "2023-02-14",
+    status: "Active",}
 ];
 
 const DaftarDivisi= () => {
