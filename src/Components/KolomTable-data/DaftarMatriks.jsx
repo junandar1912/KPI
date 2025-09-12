@@ -1,86 +1,99 @@
-import React from "react";
-import iconEdit from "../../assets/edit.svg"
+import React from 'react'
 
-const data = [
-  { idDivisi: "EMP-001",
-    Manager: "Ayu Kartika",
-    division: "Finance",
-    CreateDate: "Analis Keuangan",
-    JumlahAnggota: "2023-02-14",
-    status: "Active",},
-    { idDivisi: "EMP-001",
-    Manager: "Ayu Kartika",
-    division: "Finance",
-    CreateDate: "Analis Keuangan",
-    JumlahAnggota: "2023-02-14",
-    status: "Active",}
-];
+const DaftarMatriks = () => {
 
-const DaftarMatriks= () => {
+  const rows = [1, 2]; // contoh 2 baris awal
+
+  const Input = ({ placeholder = "Input..." }) => (
+    <input
+      type="text"
+      placeholder={placeholder}
+      className="w-full rounded-md border-gray-300 px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-gray-400 border-0"
+    />
+  );
+
   return (
-    <div>
-      <table className="min-w-full table-fixed border-collapse">
-        <thead className='w-full'>
-          <tr className='h-12'>
-            <th className="p-2.5 w-16 border-gray-300 bg-[#EAECF0] rounded-tl-lg">
-              No
-            </th>
-            <th className='p-2 w-[20%] gap-2.5 text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              Indikator
-            </th>
-            <th className='p-2 w-[20%] text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              DesKripsi
-            </th>
-            <th className='p-2 w-[20%] text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              Bobot (w)
-            </th>
-            <th className='p-2 w-[20%] text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              Target
-            </th>
-            <th className='p-2 w-[20%] text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              Realisasi
-            </th>
-            <th className='p-2 w-[20%] text-gray-500 font-semibold text-sm bg-[#EAECF0]'>
-              Score Pencapaian (A = (Realisasi/Target) x 100)
-            </th>
-            <th className='p-2.5 w-16 text-center text-sm font-medium text-gray-500 border-gray-300 bg-[#EAECF0] rounded-tr-lg'>
-              Aksi
-            </th>
+    <div className="w-full overflow-x-auto">
+      <table className="w-full table-fixed border border-gray-300">
+        <colgroup>
+          <col className="w-14" />     {/* No */}
+          <col className="w-56" />     {/* Indikator */}
+          <col className="w-[28rem]" />{/* Deskripsi */}
+          <col className="w-28" />     {/* Bobot */}
+          <col className="w-28" />     {/* Target */}
+          <col className="w-28" />     {/* Realisasi */}
+          <col className="w-64" />     {/* Score Pencapaian */}
+          <col className="w-64" />     {/* Nilai Pencapaian */}
+          <col className="w-16" />     {/* Aksi */}
+        </colgroup>
+
+        <thead className="bg-gray-100">
+          <tr>
+            {[
+              "No",
+              "Indikator",
+              "Deskripsi",
+              "Bobot (W)",
+              "Target",
+              "Realisasi",
+              "Score Pencapaian (A = (Realisasi / Target) × 100)",
+              "Nilai Pencapaian ((W × A) × 100)",
+              "Aksi",
+            ].map((h, i) => (
+              <th
+                key={i}
+                className="border border-gray-300 px-3 py-2 text-left text-sm font-semibold text-gray-700 align-middle whitespace-normal break-words"
+              >
+                {h}
+              </th>
+            ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((employee) => (
-            <tr key={employee.id} className="hover:bg-gray-50">
-              <td className="p-2.5 w-16 whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                <input type='checkbox' />
+
+        <tbody className="bg-white">
+          {rows.map((n) => (
+            <tr key={n} className="even:bg-gray-50">
+              <td className="border border-gray-200 px-3 py-2 align-top text-sm text-gray-700">
+                {n}.
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.idDivisi}
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.division}
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.Manager}
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.CreateDate}
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-gray-900 text-center border-b border-gray-300">
-                {employee.JumlahAnggota}
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2 w-[20%] whitespace-nowrap text-sm text-gray-900 text-center border-b border-gray-300">
-                 <img src="../src/assets/list.svg" alt="" />
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
               </td>
-              <td className="p-2.5 w-[20%] whitespace-nowrap text-sm text-gray-900 border-b border-gray-300">
-                <img src={iconEdit} className='cursor-pointer h-5 w-10'/>
+
+              <td className="border border-gray-200 px-3 py-2 align-top">
+                <Input />
+              </td>
+
+              <td className="border border-gray-200 px-3 py-2 align-top text-sm">
+                Edit
               </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
-export default DaftarMatriks;
+export default DaftarMatriks

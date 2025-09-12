@@ -2,7 +2,7 @@ import React from 'react'
 import icon from '../../assets/icon-upload.svg';
 import Input from '../Input'
 
-const Karyawan = ({ MunculForm, FungsiSpan, HandleOnSubmit, formKaryawan, handleChange }) => {
+const Karyawan = ({ MunculForm, FungsiSpan, HandleOnSubmit, formKaryawan, handleChange, submitPhoto }) => {
   return (
     <div className={`flex flex-col w-md bg-white rounded-lg pb-5 shadow-lg 
     absolute top-64 right-1/12 ${MunculForm ? 'hidden' : 'block'}`}>
@@ -38,7 +38,7 @@ const Karyawan = ({ MunculForm, FungsiSpan, HandleOnSubmit, formKaryawan, handle
           label="Divisi (ID)"
           name="divisionId"
           placeholder="Input ID Divisi"
-          type="number"
+          type="text"
           required
           value={formKaryawan?.divisionId ?? ''}
           onChange={handleChange}
@@ -65,7 +65,7 @@ const Karyawan = ({ MunculForm, FungsiSpan, HandleOnSubmit, formKaryawan, handle
         <div className='min-w-full h-28 flex flex-col justify-center items-center outline-1 outline-black'>
           <img src={icon} className='h-8 w-8' alt="upload" />
           <p>Upload Photo</p>
-          <button type="button" className='bg-[#3EDD29] w-20 h-6 rounded-lg text-white cursor-pointer'>select file</button>
+          <button type="button" className='bg-[#3EDD29] w-20 h-6 rounded-lg text-white cursor-pointer' onClick={submitPhoto}>select file</button>
         </div>
 
         <div className='flex flex-row gap-24 justify-center text-white mt-10'>
