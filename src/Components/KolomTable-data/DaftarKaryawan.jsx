@@ -1,22 +1,9 @@
 import React from 'react';
 import iconEdit from "../../assets/edit.svg"
 
-const data = [
-  { id: "EMP-001",
-    name: "Ayu Kartika",
-    division: "Finance",
-    title: "Analis Keuangan",
-    joinDate: "2023-02-14",
-    status: "Active",},
-    { id: "EMP-001",
-    name: "Ayu Kartika",
-    division: "Finance",
-    title: "Analis Keuangan",
-    joinDate: "2023-02-14",
-    status: "Inactive",}
-];
 
-const Karyawan= () => {
+
+const Karyawan= ({ data }) => {
   return (
     <div>
       <table className="min-w-full table-fixed border-collapse">
@@ -68,21 +55,21 @@ const Karyawan= () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((employee) => (
-            <tr key={employee.id} className="hover:bg-gray-50">
+            <tr key={employee.idUser} className="hover:bg-gray-50">
               <td className="p-2.5 w-16 whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
                 <input type='checkbox' />
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.id}
+                {employee.idUser}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.name}
+                {employee.nameUser}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.division}
+                {employee.description}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.title}
+                {employee.position}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-gray-900 text-center border-b border-gray-300">
                 {employee.joinDate}

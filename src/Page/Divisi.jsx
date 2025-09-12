@@ -1,11 +1,9 @@
-// src/pages/Divisi.jsx
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import HeaderMenu from '../Components/Menu/HeaderMenu';
 import NavMenu from '../Components/Menu/NavMenu';
 import TombolMenu from '../Components/Menu/TombolMenu';
 import DaftarDivisi from '../Components/KolomTable-data/DaftarDIvisi';
 import Divisi from '../Components/FormPenambahan/Divisi.jsx';
-
 
 const API_BASE = import.meta.env?.VITE_API_BASE_URL ?? 'http://localhost:3000';
 const ENDPOINT = `${API_BASE}/api/divisions`;
@@ -15,15 +13,18 @@ const DasbordDivisi = () => {
   const [isiSidebarTerlihat, setSidebarTidakterlihat] = useState(false);
   const [MarginSidebar, setMarginSidebar] = useState(false);
 
-  // Judul fix
+  // Judul 
   const activeJudul = 'Daftar Divisi';
 
   // Form tambah divisi
   const [hiddenForm, setHiddenForm] = useState(true);
-  const [formData, setFormData] = useState({ name: '', description: '', weight: '' });
+  const [formData, setFormData] = useState({ name: '', description: '', createdAt: '', weight:'',});
 
   // Data divisi
   const [divisions, setDivisions] = useState([]);
+
+  // Filter state
+  const [filters, setFilters] = useState({ urutan: '', description: '', name: '', month: '',});
 
   // Status loading & error
   const [loading, setLoading] = useState(false);
@@ -49,6 +50,7 @@ const DasbordDivisi = () => {
   const SpanForm = useCallback(() => {
     setHiddenForm((s) => !s);
   }, []);
+
 
   // Ambil semua divisi dari API
   const fetchDivisions = useCallback(async () => {
@@ -77,12 +79,50 @@ const DasbordDivisi = () => {
   }, [fetchDivisions]);
 
   // Handler input form
-  const handleChange = (e) =>{ 
-  const { name, value } = e.target;
-  setFormData((d) => ({ ...d, [name]: value }));
-};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((d) => ({ ...d, [name]: value }));
+  };
+
   // Reset form
   const resetForm = () => setFormData({ name: '', description: '', weight: '' });
+
+  // Toggle Reset (Riset): kembalikan ke semula
+  const handleResetFilters = useCallback(() => {
+    setFilters({ urutan: '', description: '', jabatan: '', month: '' });
+  }, []);
+
+  // Filtered data (client-side)
+  const filteredDivisions = useMemo(() => {
+    const urutan = filters.urutan.trim().toLowerCase();
+    const divSel = (filters.description || '').toLowerCase();
+    const jabSel = (filters.name || '').toLowerCase();
+    const blnSel = (filters.month || '').toLowerCase();
+
+    return divisions.filter((d) => {
+      const id = String(d?.id ?? '').toLowerCase();
+      const description = String(d?.description ?? '').toLowerCase();
+      const name = String(d?.name ?? '').toLowerCase();
+      const createdAt = String(d?.createdAt ?? '').toLowerCase();
+      
+
+      const matchQ =
+        !urutan ||
+        id.includes(urutan) ||
+        description.includes(urutan) ||
+        createdAt.includes(urutan) ||
+        name.includes(urutan);
+
+      const matchDivision = !divSel || description === divSel;
+      // jabatan tidak ada di data → abaikan, tetap lolos jika kosong
+      const matchJabatan = !jabSel;
+
+      // month (opsional): cek substring nama bulan pada createDate
+      const matchMonth = !blnSel || createdAt.includes(blnSel);
+
+      return matchQ && matchDivision && matchJabatan && matchMonth;
+    });
+  }, [divisions, filters]);
 
   // Submit form tambah divisi
   const handleSubmit = async (e) => {
@@ -131,7 +171,7 @@ const DasbordDivisi = () => {
       />
 
       <main className={`flex flex-col gap-8 p-11 min-h-screen ${MarginSidebar ? 'ml-56' : 'ml-0'}`}>
-        {/* Judul dan tombol tambah */}
+        {/* Judul dan tombol */}
         <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
           <div className="flex flex-col gap-2">
             <h1 className="text-2xl font-semibold font-public-sans">Daftar Divisi</h1>
@@ -139,10 +179,19 @@ const DasbordDivisi = () => {
               Mengelola dan melihat informasi divisi di seluruh perusahaan
             </p>
           </div>
-          <TombolMenu FormData={SpanForm} />
+
+          <div className="flex flex-row gap-3">
+            {/* Tombol tambah (tetap) */}
+            <TombolMenu FormData={SpanForm} />
+          </div>
         </header>
 
-        <NavMenu />
+        {/* Bar Pencarian dengan Toggle Reset */}
+        <NavMenu
+          filters={filters}
+          onChange={setFilters}
+          onReset={handleResetFilters}
+        />
 
         {/* Loading & Error */}
         {loading && <div>Loading…</div>}
@@ -159,8 +208,8 @@ const DasbordDivisi = () => {
           </div>
         )}
 
-        {/* Tabel daftar divisi */}
-        <DaftarDivisi data={divisions} />
+        {/* Tabel daftar divisi (terfilter) */}
+        <DaftarDivisi data={filteredDivisions} />
 
         {/* Form tambah divisi */}
         <Divisi

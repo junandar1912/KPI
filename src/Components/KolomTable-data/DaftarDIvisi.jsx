@@ -55,24 +55,24 @@ const DaftarDivisi= ({data}) => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {data.map((employee) => (
-            <tr key={employee.IdDivisi} className="hover:bg-gray-50">
+            <tr key={employee.id} className="hover:bg-gray-50">
               <td className="p-2.5 w-16 whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
                 <input type='checkbox' />
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.IdDivisi}
+                {employee.id}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.division}
+                {employee.name}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.manager}
+                {employee.description}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-center text-gray-900 border-b border-gray-300">
-                {employee.createDate}
+                {employee.createdAt}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-gray-900 text-center border-b border-gray-300">
-                {employee.jumlahAnggota}
+                {employee.weight}
               </td>
               <td className="p-2 w-[20%] whitespace-nowrap text-sm text-gray-900 text-center border-b border-gray-300">
                  <img src="../src/assets/list.svg" alt="" />
